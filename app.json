@@ -1,4 +1,16 @@
 {
+  "colors": {
+    "primaryColor": "#5E49FF",
+    "green": "#3BD420",
+    "greenWaterColor": "#25CBD3",
+    "lightBlue": "#F0F5FF",
+    "whiteColor": "#fff",
+    "gray00": "#f4f4f4",
+    "gray01": "#DADADA",
+    "gray02": "#7C7786",
+    "gray03": "#4D4D4D",
+    "gray04": "#333"
+  },
   "expo": {
     "name": "devagram",
     "slug": "devagram",
@@ -27,6 +39,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O aplicativo gostaria de acessar a galeria do seu dispositivo."
+        }
+      ]
+    ]
   }
 }
