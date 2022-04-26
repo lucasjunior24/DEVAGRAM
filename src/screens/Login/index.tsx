@@ -10,6 +10,8 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 import { styles } from './styles';
+import { login } from '../../services/UserService';
+import { communStyles } from '../../utils/communStyles';
 
 export function Login() {
   type navigationTypes = NativeStackNavigationProp<RootStackParamList, 'Login'>
@@ -17,11 +19,27 @@ export function Login() {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
+  const [erro, setErro] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  
+  const onLogin = async () => {
+    try {
+      setLoading(true);
+      await login({ login: email, senha: password})
+      setLoading(false);
+      navigation.navigate('Home');
+    } catch(error: any) {
+      console.log(error);
+      setErro("Erro ao efetuar login!")
+      setLoading(false);
+    }
+  }
+  
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hideTransitionAnimation='slide' />
       <Image style={styles.logo} source={require('../../../assets/icon.png')} />
+      {erro != '' && <Text style={communStyles.textErro}>{erro}</Text>}
       <Input
         placeholder='Digite seu E-mail'
         value={email} 
@@ -33,7 +51,7 @@ export function Login() {
         secureTextEntry={true}
         onChange={(e: string) => setPassword(e)}
       />
-      <Button placeholder='Login' onPress={() => {}} loading={false} disabled={false} />
+    <Button placeholder='Login' onPress={() => onLogin()} loading={loading} disabled={!email || !password} />
 
       <View style={styles.containerWithAccount}>
         <Text>Não possui uma conta?</Text>

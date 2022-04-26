@@ -51,6 +51,7 @@ export function Register() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      
       <UploadImage image={image} setImage={setImage} />
       {erro != '' && <Text style={communStyles.textErro}>{erro}</Text>}
       <Input

@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios, { Method } from "axios"
 
-const URL = 'https://devagram-nodejs-next-vercel.app/api'
+const URL = 'https://devagram-node-nextjs.vercel.app/api'
 
 const intance = axios.create({
     baseURL: URL,
