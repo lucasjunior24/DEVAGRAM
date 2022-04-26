@@ -21,7 +21,6 @@ export function Login() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hideTransitionAnimation='slide' />
-
       <Image style={styles.logo} source={require('../../../assets/icon.png')} />
       <Input
         placeholder='Digite seu E-mail'
