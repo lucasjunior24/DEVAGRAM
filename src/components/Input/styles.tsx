@@ -6,7 +6,7 @@ import { colors } from '../../../app.json';
 
 export const styles = StyleSheet.create({
     containerInput: {
-        marginTop: height/20,
+        marginTop: height * 0.03,
         width: width/1.3,
         height: height/25,
         borderBottomColor: colors.primaryColor,

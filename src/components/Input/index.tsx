@@ -21,6 +21,5 @@ export const Input = (props: IInput) => {
                 />
             </View>
         </View>
-       
     )
 }
