@@ -9,7 +9,8 @@
     "gray01": "#DADADA",
     "gray02": "#7C7786",
     "gray03": "#4D4D4D",
-    "gray04": "#333"
+    "gray04": "#333",
+    "gray05": "#e5e5e5"
   },
   "expo": {
     "name": "devagram",

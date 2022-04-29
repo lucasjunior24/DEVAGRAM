@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -10,7 +10,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 import { styles } from './styles';
-import { login } from '../../services/UserService';
+import { login, getCurrentUser } from '../../services/UserService';
 import { communStyles } from '../../utils/communStyles';
 
 export function Login() {
@@ -34,6 +34,17 @@ export function Login() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    verifyLogged();
+  });
+
+  const verifyLogged = useCallback(async () => {
+    const user = await getCurrentUser();
+    if(user?.token) {
+      navigation.navigate('Home');
+    }
+  }, []);
   
   return (
     <View style={styles.container}>

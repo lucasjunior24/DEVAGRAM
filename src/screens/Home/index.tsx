@@ -1,5 +1,13 @@
 import { Text, View } from "react-native"
+import { Container } from "../../components/Container"
 
 export const Home = () => {
-    return <View><Text>Hello</Text></View>
+    return (
+        <Container
+            headerProps={{default: true}}
+            footerProps={{currentTab: 'Home'}}
+        >
+            <Text>Home</Text>
+        </Container>
+    )
 }

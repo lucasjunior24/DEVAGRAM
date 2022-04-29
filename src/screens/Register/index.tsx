@@ -10,6 +10,7 @@ import { Button } from '../../components/Button';
 import { UploadImage } from '../../components/UploadImage';
 import { Input } from '../../components/Input';
 import { styles } from './styles';
+import * as UserService from '../../services/UserService';
 import { communStyles } from '../../utils/communStyles';
 import { validateConfirmPassword, validateEmail, validateName, validatePassword } from '../../utils/validations';
 
@@ -23,6 +24,35 @@ export function Register() {
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [image, setImage] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onRegister = async () => {
+    try {
+      setLoading(true);
+      const body = new FormData();
+      body.append("nome", name);
+      body.append("email", email);
+      body.append("senha", password);
+      if(image) {
+        const file: any = {
+          uri: image.uri,
+          type: `image/${image.uri.split('/').pop().split('.').pop()}`,
+          name: image.uri.split('/').pop()
+        }
+        body.append("file", file);
+      }
+
+      await UserService.register(body);
+      await UserService.login({ login: email, senha: password });
+      setLoading(false);
+      navigation.navigate('Home');
+
+    } catch(error: any) {
+      console.log(error);
+      setErro("Erro ao efetuar Cadastro!")
+      setLoading(false);
+    }
+  }
 
   function formIsValid() {
     const nameIsValid = validateName(name);
@@ -48,6 +78,7 @@ export function Register() {
   useEffect(() => {
     formIsValid();
   }, [name, email, password, confirmPassword]);
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -78,8 +109,8 @@ export function Register() {
       />
       <Button 
         placeholder='Cadastrar' 
-        onPress={() => {}} 
-        loading={false} 
+        onPress={() => onRegister()} 
+        loading={loading} 
         disabled={erro != '' || name == '' || email == '' || password == '' || confirmPassword == ''} />
 
       <View style={styles.containerWithAccount}>
