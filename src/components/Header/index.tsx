@@ -3,7 +3,6 @@ import { IHeader } from "./types"
 
 import { colors } from '../../../app.json';
 import { styles } from "./styles";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Header = (props: IHeader) => {
     return (
@@ -11,7 +10,7 @@ export const Header = (props: IHeader) => {
             {props.default && (
                 <View style={styles.row}>
                     <View>
-                        <Image source={require('../../../assets/icon.png')} style={styles.icon}></Image>
+                        <Image source={require('../../_assets/images/logoHorizontal.png')} style={styles.icon} />
                     </View>
 
                     <View 
@@ -21,8 +20,9 @@ export const Header = (props: IHeader) => {
                             { borderColor: colors.primaryColor, 
                             borderWidth: 1}]}>
                         <Image 
-                            source={require('../../../assets/icon.png')} 
-                            style={styles.icon} />
+                            source={require('../../_assets/images/search.png')}
+                            style={styles.icon}
+                        />
                         <TextInput
                             placeholder="Pesquisar"
                             style={props?.searchBar?.value.length == 0 ? styles.input : styles.inputActive}

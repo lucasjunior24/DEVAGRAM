@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     container: {
         width: width,
         height: height * 0.05,
-        backgroundColor: colors.primaryColor
+        backgroundColor: colors.lightBlue
     },
     row: {
         flexDirection: "row",

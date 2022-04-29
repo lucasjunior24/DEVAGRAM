@@ -27,7 +27,7 @@ export const UploadImage = (props: {
                 {props.image ? 
                     <Image style={styles.image} source={{uri: props.image.uri}} />
                     :
-                    <Image style={styles.image} source={require('../../../assets/icon.png')} />
+                    <Image source={require('../../_assets/images/Avatar_Foto.png')}></Image>
                 }
                 {/* <Image source={require('../../../assets/icon.png')} /> */}
             </TouchableOpacity>

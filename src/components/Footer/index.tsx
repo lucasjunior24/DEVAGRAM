@@ -13,20 +13,20 @@ export const Footer = (props: IFooter) => {
         {
             title: "Home",
             onPress: () => navigation.navigate('Home'),
-            icon: require('../../../assets/icon.png'),
-            iconActivated: require('../../../assets/icon.png')
+            icon: require('../../_assets/images/home.png'),
+            iconActivated: require('../../_assets/images/homeAtivo.png'),
         },
         {
             title: "NewPublication",
             onPress: () => navigation.navigate('NewPublication'),
-            icon: require('../../../assets/icon.png'),
-            iconActivated: require('../../../assets/icon.png')
+            icon: require('../../_assets/images/newPublication.png'),
+            iconActivated: require('../../_assets/images/newPublicationAtivo.png'),
         },
         {
             title: "Profile",
             onPress: () => navigation.navigate('Profile'),
-            icon: require('../../../assets/icon.png'),
-            iconActivated: require('../../../assets/icon.png')
+            icon: require('../../_assets/images/userNaoAtivo.png'),
+            iconActivated: require('../../_assets/images/user.png'),
         }
     ]
     return (
